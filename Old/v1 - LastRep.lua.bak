@@ -1,0 +1,54 @@
+local frame = CreateFrame("FRAME", "LastRepAddonFrame");
+frame:RegisterEvent("CHAT_MSG_COMBAT_FACTION_CHANGE");
+
+-- TODO: Add options for wantClear, Time, MakeExhaltedInactive, Skip Inactive, show increase, show decrease
+-- Break the showing into a seprate function so you can add ONLOAD 
+
+local function eventHandler(self, event, arg1, ...)
+	print("STRING: " .. arg1);
+	local faction = select(3, string.find(arg1, "Reputation with (.+) increased by "));
+	print("Reputation: " .. faction);
+	
+	local i = 1;
+	local numFactions = GetNumFactions();
+	
+	-- There's an ExpandAllFactionHeaders CollapseAllFactionHeaders
+	
+	--[[ Rewrite
+
+	ExpandAllFactionHeaders();
+
+	for i = 1, numFactions, 1 do
+		-- TODO: Rewrite Variable names (throwaways? _)
+		local name, _, standingId, bottomValue, topValue, progress, 
+			_, _, _, _, hasRep, isWatched, _ = GetFactionInfo(i);
+		
+		if( faction == name ) then
+			SetWatchedFactionIndex(i);
+			C_Timer.After(60, function() SetWatchedFactionIndex(0) end);
+			break
+		end			
+
+	CollapseAllFactionHeaders()
+
+	--]]
+	
+	
+	while (i <= numFactions ) do
+		local name, description, standingId, bottomValue, topValue,
+			earnedValue, atWarWith, canToggleAtWar, isHeader,
+			isCollapsed, hasRep, isWatched, isChild = GetFactionInfo(i);
+		
+		if (faction == name) then
+			SetWatchedFactionIndex(i);
+			C_Timer.After(30, function() SetWatchedFactionIndex(0) end);
+		elseif (isHeader and isCollapsed) then
+			ExpandFactionHeader(i);
+			numFactions = GetNumFactions();
+		end
+	i = i + 1;
+	end
+end
+
+frame:SetScript("OnEvent", eventHandler);
+

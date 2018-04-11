@@ -1,0 +1,6 @@
+## Interface: 70300
+## Title: LastRep
+## Notes: LastRep by GaidinBDJ
+## SavedVariables: LastRep_Pref_Verbose, LastRep_Pref_SwitchBar, LastRep_Pref_Timeout, LastRep_Pref_TimeoutSeconds
+LastRep.lua
+LastRep.xml
