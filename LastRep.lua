@@ -2,16 +2,6 @@ local frame = CreateFrame("FRAME", "LastRepAddonFrame");
 frame:RegisterEvent("CHAT_MSG_COMBAT_FACTION_CHANGE");
 frame:RegisterEvent("ADDON_LOADED");
 
--- TODO: Add options for wantClear, Time, MakeExhaltedInactive, SkipInactive, show increase, show decrease
--- Need the following options:
---  wantClear - Auto-clear once set
---  clearTime - How long to wait to auto-clear
---  makeExhaltedInactive - Move completed reps to inactive
---  skipInactive - Skip inactive reps
---  showIncreases - Show increases
---  showDecrease  - Show decreases
--- Fix Guild.  Got to next time.
-
 LastRep_STANDING_STRINGS = {"Hated","Hostile","Unfriendly","Neutral","Friendly","Honored","Revered","Exalted"};
 LastRep_FRIENDSHIP_STRINGS = {"Stranger","Acquaintance","Buddy", "Friend", "Good Friend", "Best Friend"};
 LastRep_BODYGUARD_STRINGS = {"Level 1","Level 2","Level 3"};
